@@ -1,0 +1,33 @@
+//header styles
+
+
+.header
+  padding: 2*$gutter 0
+
+  &__box
+    @include box
+    padding: 0 4*$gutter
+    display: flex
+    flex-direction: row
+    flex-basis: calc(100% / 12)
+    align-items: center
+
+  &__logo
+    flex-grow: 3
+    display: flex
+    align-items: center
+    text-decoration: none
+  //color: $color__text_primary
+
+  &__name
+    font-weight: bold
+    letter-spacing: 1px
+    font-size: 1.2em
+    margin-top: -1px
+
+  &__zone
+    font-weight: 300
+
+  &__content
+    flex-grow: 9
+    text-align: right

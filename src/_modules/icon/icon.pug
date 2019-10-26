@@ -1,0 +1,10 @@
+mixin icon(spec)
+    - spec = spec || {}
+    - spec.__class = spec.__class || ''
+    - spec.width  = spec.width || '16px'
+    - spec.height  = spec.height || '16px'
+    - spec.name  = spec.name || ''
+    - spec.color  = spec.color || 'currentColor'
+
+    svg.icon(class=spec.__class width=spec.width height=spec.height fill=spec.color)&attributes(attributes)
+        use(xlink:href=spec.name)

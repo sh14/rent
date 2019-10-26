@@ -1,0 +1,18 @@
+//footer styles
+
+.footer
+  @include flexed(1, 2, 3, 1,'list','item')
+  font-size: .8em
+  position: relative
+  overflow: hidden
+
+  &__box
+    @include box
+    border-top: 1px solid $color__fifth
+    position: relative
+    z-index: 2
+
+
+  &__cred
+    text-align: center
+    padding: 4*$gutter

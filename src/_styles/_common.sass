@@ -1,0 +1,283 @@
+@mixin gradient($color__1,$color__2)
+  background: linear-gradient(90deg, $color__1 0%, $color__2 100%)
+
+@mixin input
+  border: 1px solid $color__input-border
+  border-radius: $radius__input
+  padding: 4*$gutter 5*$gutter
+  line-height: 1
+  background: $color__bg
+  font-size: $font-size__base
+  font-family: sans-serif
+  font-weight: 300
+  width: 100%
+  box-sizing: border-box
+  outline: none
+  transition: all 150ms ease-in
+
+  &:focus, &:hover, &:active
+    outline: none
+    transition: all 150ms ease-out
+
+  //&:focus
+    //border-color: $color__primary_main
+    //@include level(1, $color__primary_main, 0)
+
+@mixin level($level,$color,$zIndex)
+  @if (0==$level)
+    box-shadow: 0px 0px 0px transparentize($color, .76), 0px 0px 0px transparentize($color, .84)
+
+  @if (1==$level)
+    box-shadow: 0px 1px 2px transparentize($color, .76), 0px 2px 6px transparentize($color, .84)
+
+  @if (2==$level)
+    box-shadow: 0px 2px 4px transparentize($color, .76), 0px 4px 8px transparentize($color, .84)
+
+  @if (3==$level)
+    box-shadow: 0px 4px 8px transparentize($color, .84), 0px 8px 16px transparentize($color, .9)
+
+  @if (4==$level)
+    box-shadow: 0px 6px 12px transparentize($color, .86), 0px 16px 24px transparentize($color, .92)
+
+  $var: 0
+  @if (0<$zIndex)
+    @for $i from 0 to $zIndex
+      $var: $var*10+9
+    z-index: $var
+    position: relative
+
+
+@mixin button-state($type,$color_first,$color_second)
+  // кнопка без всего
+  @if ('link'==$type)
+    color: $color_first
+    border-color: transparent
+    background: transparent
+    &:focus, &:hover, &:active
+      color: darken($color_first, 15)
+      border-color: transparent
+      background: transparent
+      @include level(0, $color_second, 0)
+
+  // кнопка без заливки с тенью
+  @if ('normal'==$type)
+    color: $color_second
+    border-color: $color_first
+    background: $color_first
+    @include level(1, $color_second, 0)
+    &:focus, &:hover, &:active
+      border-color: transparentize($color_second, .94)
+      background: transparentize($color_second, .94)
+
+  // кнопка с бледной заливкой без тени
+  @if ('flat'==$type)
+    color: $color_second
+    border-color: transparentize($color_first, .99)
+    background: transparentize($color_first, .84)
+    @include level(0, $color_second, 0)
+    &:focus, &:hover, &:active
+      background: transparentize($color_first, .64)
+
+  // кнопка с заливкой и тенью
+  @if ('solid'==$type)
+    color: $color_second
+    border-color: $color_first
+    background: $color_first
+    @include level(1, $color_first, 0)
+    &:focus, &:hover, &:active
+      border-color: darken($color_first, 10)
+      background: darken($color_first, 10)
+
+  // кнопка с рамкой без тени
+  @if ('border'==$type)
+    color: $color_second
+    border-color: $color_second
+    background: $color_first
+    @include level(0, $color_second, 0)
+    &:focus, &:hover, &:active
+      background: transparentize($color_second, .94)
+
+  // tag
+  @if ('tag'==$type)
+    color: $color_second
+    border-color: $color_first
+    background: $color_first
+    &:focus, &:hover, &:active
+      border-color: darken($color_first, 10)
+      background: darken($color_first, 10)
+
+
+@mixin button($type)
+  @include input
+  width: auto
+  padding: (4*$gutter+1px) 5*$gutter
+  font-weight: 400
+  cursor: pointer
+  text-decoration: none
+
+
+  &_block
+    display: block
+    width: 100%
+
+  //@if ($type=='primary')
+    //@include button-state('solid', $color__text_primary, $color__zero)
+    //text-transform: uppercase
+
+
+@mixin form
+  display: block
+  width: 100%
+  margin: auto
+  box-sizing: border-box
+
+  &__column, &__row
+    display: flex
+
+  &__row
+    flex-direction: row
+    flex-wrap: wrap
+
+  &__column
+    flex-direction: column
+
+  &__group
+    box-sizing: border-box
+    margin: 0 3*$gutter 5*$gutter 3*$gutter
+
+  &__label
+    display: inline-block
+    margin: 0 0 $gutter 3*$gutter
+
+  &__hint
+    color: $color__text_third
+    font-size: $font-size__md
+    font-weight: 300
+    margin: $gutter 0 0 3*$gutter
+
+@mixin for-media($size)
+  @if (phone==$size)
+    @media (max-width: 599px)
+      @content
+
+  @else if (tablet==$size)
+    @media (min-width: 900px)
+      @content
+
+  @else if (desktop==$size)
+    @media (min-width: 1200px)
+      @content
+
+
+@mixin title($size)
+  position: relative
+  margin: 1em 0
+  font-weight: 500
+  color: $color__text_title
+  &_sub
+    color: $color__text_subtitle
+  @if ($size > 0)
+    $font__size: nth($fonts__sizes_list, $size)
+    font-size: calc( #{$font__size} + 1vw)
+    line-height: 1
+
+@mixin box
+  max-width: $width__wide
+  margin: auto
+  padding: 0 4*$gutter
+
+
+@mixin link
+  display: inline-block
+  vertical-align: middle
+  position: relative
+  text-decoration: none
+  color: $color__link
+  transition: all .2s ease-in
+
+  &_more
+    white-space: nowrap
+    line-height: 1
+
+
+  &:hover
+    color: $color__link_hover
+  &:active
+    color: $color__link_active
+  &:focus
+    color: $color__link_focus
+
+
+  &__block
+    transition: inherit
+  &__text
+    transition: inherit
+    display: inline-block
+    vertical-align: middle
+  &__icon
+    transition: inherit
+    //transition-delay: 300ms
+    margin-left: 2em
+    display: inline-block
+    vertical-align: middle
+    text-align: center
+    background-color: $color__zero
+    color: $color__link
+    width: 2em
+    height: 2em
+    line-height: 2.25em
+    border-radius: 50%
+    box-shadow: 0 0 0 0 rgba(252, 252, 252, .75)
+
+
+  &:hover &__icon
+    background-color: $color__link_hover
+  &:active &__icon
+    background-color: $color__link_active
+  &:focus &__icon
+    background-color: $color__link_focus
+
+
+@mixin flexed($mobile,$tablet,$desktop,$grow,$listClass,$itemClass)
+  &__#{$listClass}
+    display: flex
+    flex-wrap: wrap
+    flex-direction: row
+    list-style: none
+    padding: 0
+    margin: 0
+
+  &__#{$itemClass}
+    padding: 4*$gutter
+    flex-grow: $grow
+    flex-shrink: 1
+    flex-basis: calc(100% / #{$mobile})
+    @media (min-width: $minWidth_more)
+      flex-basis: calc(100% / #{$tablet})
+    @media (min-width: $width__tablet_more)
+      flex-basis: calc(100% / #{$desktop})
+
+@mixin list
+  &__list
+    list-style: none
+  &__item
+    position: relative
+    margin: 0 0 1em 0
+    &:before
+      content: '✓'
+      width: 1em
+      height: 1em
+      line-height: 1em
+      display: block
+      position: absolute
+      color: $color__zero
+      background: $color__ten
+      border-radius: 50%
+      text-align: center
+      left: -1.3em
+      top: 0.25em
+    &:after
+      content: ';'
+      display: inline-block
+    &:last-child:after
+      content: '.'

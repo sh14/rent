@@ -1,0 +1,7 @@
+{
+  "generator-yolo": {
+    "project": "rent",
+    "author": "Alex Isaenko",
+    "jsPreprocessor": "ES6(using babel)"
+  }
+}

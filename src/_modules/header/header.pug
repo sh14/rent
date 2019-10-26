@@ -1,0 +1,14 @@
+mixin header(spec)
+    - site = htmlWebpackPlugin.options
+    - spec = spec || {}
+    - spec.__class = spec.__class || ''
+
+    .header(class=spec.__class)&attributes(attributes)
+        .header__box
+            a.header__logo(href="/")
+                //img.logo(src="/assets/images/logo.png")
+                +icon({ name: '#logo', width: '50px', height: '50px', })
+                .header__name estate
+                .header__zone ru
+            .header__content
+                a.phone(href="tel:+79267533971") +7 926 753 39 71

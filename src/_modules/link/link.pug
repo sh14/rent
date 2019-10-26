@@ -1,0 +1,20 @@
+mixin link(spec)
+    - spec = spec || {}
+    - spec.__mixin = spec.__mixin ? '_'+spec.__mixin : ''
+    - spec.__class = spec.__class || 'link'
+    - spec.href  = spec.href || '#'
+    - spec.text  = spec.text || ''
+    - spec.width  = spec.width || '16px'
+    - spec.height  = spec.height || '16px'
+    - spec.name  = spec.name || ''
+
+    if spec.__mixin
+        a(href=spec.link class=spec.__class + ' ' + spec.__class + spec.__mixin)&attributes(attributes)
+            span(class=spec.__class + '__text' + ' ' + spec.__class + '__text' + spec.__mixin)=spec.text
+            span(class=spec.__class + '__icon' + ' ' + spec.__class + '__icon' + spec.__mixin)
+                +icon({ name: spec.name, width: spec.width, height: spec.height, })
+    else
+        a(href=spec.link class=spec.__class + spec.__mixin)&attributes(attributes)
+            span(class=spec.__class + '__text' + spec.__mixin)=spec.text
+            span(class=spec.__class + '__icon' + spec.__mixin)
+                +icon({ name: spec.name, width: spec.width, height: spec.height, })

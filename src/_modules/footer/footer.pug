@@ -1,0 +1,34 @@
+mixin footer(spec)
+    - site = htmlWebpackPlugin.options
+    - spec = spec || {}
+    - spec.__class = spec.__class || ''
+
+    .footer(id="footer" class=spec.__class)&attributes(attributes)
+        .footer__box
+            .footer__list
+                .footer__item
+                    h3.footer__title Наш офис
+                    .footer__content
+                        p
+                            a.link.link_invert(href="https://goo.gl/maps/yZDnxbgiFU3KLouN7" target="_blank") 117545, Москва, Варшавское шоссе, дом 129, офис 20
+                        p
+                            a.link.link_invert(href="tel:+79267533971") +7 926 753 39 71
+                .footer__item
+                    h3.footer__title Представительство в тайланде
+                    .footer__content
+                        p Pattaya Real Estate Co., LtdShop 1, 445/541-2 Moo 12, Nongprue, Banglamung, Chonburi 20150 Thailand.
+                .footer__item
+                    h3.footer__title Мы в соцсетях
+                    .footer__content
+                        .socials
+                            a.socials__item(href="https://www.youtube.com/channel/UCTihp1qCfIJVSctsBTgeRXw" target="_blank")
+                                +icon({ name: '#youtube', width: '2em', height: '2em', })
+                            a.socials__item(href="https://vk.com/club49354025" target="_blank")
+                                +icon({ name: '#vk', width: '2em', height: '2em', })
+                            a.socials__item(href="https://www.instagram.com/gdkgroup.ru/" target="_blank")
+                                +icon({ name: '#ig', width: '2em', height: '2em', })
+                        p
+                            a.link.link_invert(href="/policy") Политика конфиденциальности
+                        //p
+                        //    a.link.link_invert(href="#") Пользовательское соглашение
+            .footer__cred © 2019 Все права защищены.

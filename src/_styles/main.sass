@@ -1,0 +1,297 @@
+//Normalize styles
+//@import '../../node_modules/normalize.css/normalize'
+
+
+
+
+@import "./_fonts"
+@import './_constants'
+@import './_common'
+@import '../_modules/header/header'
+@import '../_modules/footer/footer'
+
+*
+  box-sizing: border-box
+
+body
+  font-family: 'Roboto', Arial, Helvetica, sans-serif
+  margin: 0
+  padding: 0
+  line-height: 1.45
+  color: $color__text
+  //font-family: latolight, latoregular, 'Open Sans', Roboto, Arial, sans-serif
+  background: $color__second
+  //letter-spacing: .75px
+  font-size: $font-size__base
+  font-weight: 300
+
+
+
+a
+  color: $color__link
+
+h2
+  display: block
+  font-size: 2em
+  margin-block-start: .67em
+  margin-block-end: .67em
+  margin-inline-start: 0px
+  margin-inline-end: 0px
+  font-weight: bold
+
+h2
+  display: block
+  font-size: 1.5em
+  margin-block-start: .83em
+  margin-block-end: .83em
+  margin-inline-start: 0px
+  margin-inline-end: 0px
+  font-weight: bold
+
+h3
+  display: block
+  font-size: 1.17em
+  margin-block-start: 1em
+  margin-block-end: 1em
+  margin-inline-start: 0px
+  margin-inline-end: 0px
+  font-weight: bold
+
+
+.title
+  @include title(1)
+
+.link
+  @include link
+
+.logo
+  display: block
+  height: 50px
+  width: auto
+
+.page
+  &__box
+    @include box
+
+.phone
+  text-decoration: none
+  font-weight: 500
+  color: $color__first
+
+.block-main
+  width: 100%
+  padding: 20*$gutter 0
+  box-sizing: border-box
+  position: relative
+
+  &__box
+    @include box
+    padding: 0 4*$gutter
+    position: relative
+    z-index: 2
+
+
+.main
+  &__box
+    background-image: url(/assets/images/rent.jpg)
+    background-repeat: no-repeat
+    background-position: center
+    background-size: cover
+    width: 100%
+    padding-top: calc(100% / #{$thumbRatio})
+    max-width: $width__wide
+    margin: auto
+    position: relative
+
+  &__content
+    position: absolute
+    left: 0
+    top: 0
+    bottom: 0
+    width: 50%
+    display: flex
+    flex-direction: column
+    justify-content: center
+    padding: 4*$gutter
+    @media (min-width: $minWidth_more)
+      width: 50%
+    @media (min-width: $width__tablet_more)
+      width: 60%
+
+  &__block
+    background: rgba(255, 255, 255, 0.9)
+    padding: 4*$gutter
+    height: 100%
+    justify-content: center
+    display: flex
+    flex-direction: column
+
+
+  &__title
+    @include title(1)
+    margin: 0 0 4*$gutter 0
+
+  &__subtitle
+    @include title(2)
+    margin: 0 0 4*$gutter 0
+    font-size: 1.4em
+
+.forwhom
+  @include list
+  margin: 10*$gutter 0
+
+  &__box
+    @include box
+    background: $color__zero
+    padding: 30*$gutter 4*$gutter
+
+  &__title
+    @include title(2)
+    margin: 0 0 4*$gutter 0
+
+.whatisit
+  position: relative
+
+  &:before
+    content: ''
+    display: block
+    position: absolute
+    top: 0
+    left: 0
+    height: 100%
+    width: 100%
+    background: $color__six url(/assets/images/service.jpg) center / cover no-repeat
+    opacity: .3
+    z-index: 1
+
+  &__box
+    @include box
+    position: relative
+    padding: 30*$gutter 4*$gutter
+    z-index: 2
+    text-align: center
+
+  &__subtitle
+    @include title(3)
+
+  &__title
+    @include title(2)
+
+.include
+  &__box
+    @include box
+    position: relative
+    padding: 30*$gutter 4*$gutter
+    z-index: 2
+    text-align: right
+
+  &__subtitle
+    @include title(3)
+
+  &__title
+    @include title(2)
+.howitworks
+  &__box
+    @include box
+    position: relative
+    padding: 30*$gutter 4*$gutter
+    z-index: 2
+    text-align: right
+
+  &__subtitle
+    @include title(3)
+
+  &__title
+    @include title(2)
+
+.pricedetect
+  &__box
+    @include box
+    position: relative
+    padding: 30*$gutter 4*$gutter
+    z-index: 2
+    text-align: right
+
+  &__subtitle
+    @include title(3)
+
+  &__title
+    @include title(2)
+
+.testimonials
+  @include flexed(1, 2, 2, 1,'list','item')
+  &__box
+    @include box
+    position: relative
+    padding: 30*$gutter 4*$gutter
+    z-index: 2
+    text-align: right
+
+  &__name
+    @include title(4)
+
+  &__subtitle
+    @include title(3)
+
+  &__title
+    @include title(2)
+
+  &__list
+    padding: 0
+    margin: 0 -2*$gutter
+    list-style: none
+  &__item
+    padding: 2*$gutter
+    margin: 0
+  &__name
+    display: block
+
+.conditions
+  @include flexed(1, 2, 4, 1,'blocks','block')
+  &__box
+    @include box
+    position: relative
+    padding: 30*$gutter 4*$gutter
+    z-index: 2
+
+  &__subtitle
+    @include title(3)
+
+  &__title
+    @include title(2)
+
+  &__list
+    padding-bottom: 1px
+  &__blocks
+    padding: 0
+    margin: 0 -2*$gutter
+    list-style: none
+
+  &__block
+    display: block
+    margin: 0
+    padding: 2*$gutter
+    position: relative
+
+
+.article
+  @include list
+  min-width: 270px
+  height: 100%
+  background: $color__zero
+  padding: 4*$gutter 4*$gutter calc(1em + 11*#{$gutter}) 4*$gutter
+  &__subtitle
+    @include title(3)
+
+  &__title
+    @include title(2)
+  &__price
+    padding: 4*$gutter
+    border-top: 1px solid $color__second
+    text-align: center
+    position: absolute
+    left: 0
+    right: 0
+    bottom: 0
+
+@import "../_modules/button/button"
