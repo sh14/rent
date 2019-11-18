@@ -2,8 +2,6 @@
 //@import '../../node_modules/normalize.css/normalize'
 
 
-
-
 @import "./_fonts"
 @import './_constants'
 @import './_common'
@@ -16,7 +14,7 @@
 body
   font-family: 'Roboto', Arial, Helvetica, sans-serif
   margin: 0
-  padding: 0
+  padding: 66px 0 0 0
   line-height: 1.45
   color: $color__text
   //font-family: latolight, latoregular, 'Open Sans', Roboto, Arial, sans-serif
@@ -24,7 +22,6 @@ body
   //letter-spacing: .75px
   font-size: $font-size__base
   font-weight: 300
-
 
 
 a
@@ -92,39 +89,11 @@ h3
 
 
 .main
+  @include bg
+
   &__box
-    background-image: url(#{$ghpages}/assets/images/rent.jpg)
-    background-repeat: no-repeat
-    background-position: center
-    background-size: cover
-    width: 100%
-    padding-top: calc(100% / #{$thumbRatio})
-    max-width: $width__wide
-    margin: auto
-    position: relative
-
-  &__content
-    position: absolute
-    left: 0
-    top: 0
-    bottom: 0
-    width: 50%
-    display: flex
-    flex-direction: column
-    justify-content: center
-    padding: 4*$gutter
-    @media (min-width: $minWidth_more)
-      width: 50%
-    @media (min-width: $width__tablet_more)
-      width: 60%
-
-  &__block
-    background: rgba(255, 255, 255, 0.9)
-    padding: 4*$gutter
-    height: 100%
-    justify-content: center
-    display: flex
-    flex-direction: column
+    background-image: url(#{$ghpages}assets/images/main.png)
+    padding-top: calc(100% * 894 / 1440)
 
 
   &__title
@@ -137,39 +106,30 @@ h3
     font-size: 1.4em
 
 .forwhom
-  @include list
-  margin: 10*$gutter 0
+  @include flexed(1, 3, 3, 1, 'list', 'item')
+  margin: 0
 
   &__box
     @include box
-    background: $color__zero
-    padding: 30*$gutter 4*$gutter
+    padding: 20*$gutter 4*$gutter 30*$gutter 4*$gutter
+    max-width: $width__tablet
 
   &__title
     @include title(2)
-    margin: 0 0 4*$gutter 0
+    margin: 0 0 6*$gutter 0
+    text-align: center
+
+
+.card
+  @include card
+
 
 .whatisit
-  position: relative
-
-  &:before
-    content: ''
-    display: block
-    position: absolute
-    top: 0
-    left: 0
-    height: 100%
-    width: 100%
-    background: $color__six url(#{$ghpages}/assets/images/service.jpg) center / cover no-repeat
-    opacity: .3
-    z-index: 1
+  @include bg
 
   &__box
-    @include box
-    position: relative
-    padding: 30*$gutter 4*$gutter
-    z-index: 2
-    text-align: center
+    background-image: url(#{$ghpages}assets/images/whatisit.png)
+    padding-top: calc(100% * 814 / 1440)
 
   &__subtitle
     @include title(3)
@@ -178,39 +138,100 @@ h3
     @include title(2)
 
 .include
+  @include flexed(1, 3, 3, 1, 'list', 'item')
+  text-align: center
+
   &__box
     @include box
     position: relative
     padding: 30*$gutter 4*$gutter
     z-index: 2
-    text-align: right
 
   &__subtitle
-    @include title(3)
+    display: block
 
   &__title
     @include title(2)
+    margin-top: 0
+
+  &__item
+    font-size: .8em
+
 .howitworks
+  position: relative
+  background-position: center
+  background-size: cover
+  background-image: url(#{$ghpages}assets/images/howitworks.png)
+  text-align: center
+
   &__box
-    @include box
-    position: relative
-    padding: 30*$gutter 4*$gutter
-    z-index: 2
-    text-align: right
+    padding: 50*$gutter 4*$gutter
+  //position: relative
+  //z-index: 2
+  //text-align: right
+
+  &__content
+    display: block
+  //padding-top: 30*$gutter
+  //padding-bottom: 30*$gutter
 
   &__subtitle
     @include title(3)
 
   &__title
     @include title(2)
+    margin-top: 0
+
+  &__list
+    list-style: none
+    padding: 0
+    margin: 0
+
+  &__description
+    position: absolute
+    left: 0
+    bottom: 50px
+    width: 100%
+    font-size: .6em
+
+  &__pin
+    background: transparent
+    border: 1px solid $color__third
+    display: block
+    border-radius: 50%
+    width: 2em
+    height: 2em
+    line-height: 1.8em
+    margin: 1em auto
+    position: relative
+    color: $color__third
+    text-align: center
+
+    &_1
+      margin-bottom: 3em
+
+      &:after
+        content: ''
+        display: block
+        position: absolute
+        top: 100%
+        left: 50%
+        width: 1px
+        height: calc(3em + 1px)
+        background: $color__third
 
 .pricedetect
+  @include bg
+
   &__box
-    @include box
+    background-image: url(#{$ghpages}assets/images/cost.png)
     position: relative
-    padding: 30*$gutter 4*$gutter
+    padding: 50*$gutter 4*$gutter
     z-index: 2
-    text-align: right
+    text-align: center
+
+  &__content
+    position: initial
 
   &__subtitle
     @include title(3)
@@ -219,13 +240,11 @@ h3
     @include title(2)
 
 .testimonials
-  @include flexed(1, 2, 2, 1,'list','item')
+  @include flexed(1, 2, 2, 1, 'list', 'item')
+
   &__box
     @include box
-    position: relative
-    padding: 30*$gutter 4*$gutter
-    z-index: 2
-    text-align: right
+
 
   &__name
     @include title(4)
@@ -240,14 +259,47 @@ h3
     padding: 0
     margin: 0 -2*$gutter
     list-style: none
+
   &__item
     padding: 2*$gutter
-    margin: 0
+    display: flex
+    flex-direction: column
+
   &__name
     display: block
 
+.testimonial
+  @include card
+
+  &__header
+    display: flex
+    flex-direction: row
+    align-items: center
+
+  &__avatar
+    $size: 48px
+    margin: 0 4*$gutter 0 0
+    width: $size
+    height: $size
+
+  &__name
+    flex-grow: 1
+    color: $color__text_title
+    margin: 0
+    font-weight: 300
+
+
+  &__date
+    text-align: right
+    font-size: .8em
+
+  &__content
+    padding: 0
+
+
 .conditions
-  @include flexed(1, 2, 4, 1,'blocks','block')
+  @include flexed(1, 2, 4, 1, 'blocks', 'block')
+
   &__box
     @include box
     position: relative
@@ -262,6 +314,7 @@ h3
 
   &__list
     padding-bottom: 1px
+
   &__blocks
     padding: 0
     margin: 0 -2*$gutter
@@ -273,18 +326,22 @@ h3
     padding: 2*$gutter
     position: relative
 
-
-.article
+.condition
   @include list
+  @include card
   min-width: 270px
-  height: 100%
-  background: $color__zero
-  padding: 4*$gutter 4*$gutter calc(1em + 11*#{$gutter}) 4*$gutter
-  &__subtitle
-    @include title(3)
+  position: relative
 
-  &__title
-    @include title(2)
+  &__name
+    @include title(6)
+    text-align: center
+
+  &_best
+    border: 1px solid $color__eleven
+    @include for-media('tablet')
+      position: relative
+      top: -20px
+
   &__price
     padding: 4*$gutter
     border-top: 1px solid $color__second
@@ -293,5 +350,19 @@ h3
     left: 0
     right: 0
     bottom: 0
+
+.article
+  @include list
+  min-width: 270px
+  height: 100%
+  background: $color__zero
+  padding: 4*$gutter 4*$gutter calc(1em + 11 * #{$gutter}) 4*$gutter
+
+  &__subtitle
+    @include title(3)
+
+  &__title
+    @include title(2)
+
 
 @import "../_modules/button/button"

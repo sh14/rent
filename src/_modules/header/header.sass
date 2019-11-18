@@ -2,7 +2,14 @@
 
 
 .header
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  background: $color__zero
+  z-index: 999
   padding: 2*$gutter 0
+  border-bottom: 1px solid transparentize($color__third,.9)
 
   &__box
     @include box

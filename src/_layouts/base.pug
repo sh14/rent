@@ -4,13 +4,15 @@ include ../_modules/button/button
 include ../_modules/icon/icon
 include ../_modules/link/link
 include ../_modules/footer/footer
+include ../_modules/testimonial/testimonial
 
 block consts
   - const domain = 'rent.ru'
   - const url = 'https://'+domain+'/'
   - const siteTitle = '- rent'
   - const lang = 'ru'
-  - const ghpages = '/rent'
+  - const ghpages = '/'
+  // - const ghpages = '/rent'
   - const hash = new Date().getTime().toString('16')
 
 
@@ -48,16 +50,16 @@ head
   meta(property="og:image"              content=url + 'assets/images/share-thumb.png')
   meta(name="yandex-verification" content="684fee586689a312")
 
-  //link(rel="apple-touch-icon" sizes="180x180" href="${ghpages}/assets/images/fav/apple-touch-icon.png")
-  //link(rel="icon" type="image/png" sizes="32x32" href="${ghpages}/assets/images/fav/favicon-32x32.png")
-  //link(rel="icon" type="image/png" sizes="16x16" href="${ghpages}/assets/images/fav/favicon-16x16.png")
-  //link(rel="manifest" href="${ghpages}/assets/images/fav/site.webmanifest")
-  //link(rel="mask-icon" href="${ghpages}/assets/images/fav/safari-pinned-tab.svg" color="#5bbad5")
+  //link(rel="apple-touch-icon" sizes="180x180" href="${ghpages}assets/images/fav/apple-touch-icon.png")
+  //link(rel="icon" type="image/png" sizes="32x32" href="${ghpages}assets/images/fav/favicon-32x32.png")
+  //link(rel="icon" type="image/png" sizes="16x16" href="${ghpages}assets/images/fav/favicon-16x16.png")
+  //link(rel="manifest" href="${ghpages}assets/images/fav/site.webmanifest")
+  //link(rel="mask-icon" href="${ghpages}assets/images/fav/safari-pinned-tab.svg" color="#5bbad5")
   //meta(name="msapplication-TileColor" content="#da532c")
   //meta(name="theme-color" content="#fff")
 
   block stylesheets
-    link(rel='stylesheet', href=`${ghpages}/assets/styles/main.css?${hash}`)
+    link(rel='stylesheet', href=`${ghpages}assets/styles/main.css?${hash}`)
 body
   <!--[if lt IE 9]>
   <p class='browsehappy'>You are using an <strong>outdated</strong> browser. Please <a href='http://browsehappy.com/'>upgrade your browser</a> to improve your experience.</p>

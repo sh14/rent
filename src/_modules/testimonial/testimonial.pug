@@ -1,0 +1,17 @@
+mixin testimonial(spec)
+    - site = htmlWebpackPlugin.options
+    - spec = spec || {}
+    - spec.__class = spec.__class || ''
+    - spec.name = spec.name || ''
+    - spec.date = spec.date || ''
+    - spec.avatar = spec.avatar || ''
+    - spec.text = spec.text || ''
+
+    .testimonial(class=spec.__class)&attributes(attributes)
+        .testimonial__header
+            img.testimonial__avatar(src=ghpages+"assets/images/" + spec.avatar + ".png")
+            h4.testimonial__name=spec.name
+            .testimonial__date=spec.date
+
+        .testimonial__content
+            p=spec.text

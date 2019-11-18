@@ -276,7 +276,7 @@ module.exports = smp.wrap({
     // определение css файлов, которые будут минимизированны
     new PurgecssPlugin({
       paths: glob.sync(`${PATHS.src}/**/*`, { nodir: true }),
-      whitelistPatterns: [/link_.*/,/header_.*/]
+      whitelistPatterns: [/link_.*/,/header_.*/,/testimonial_.*/,/testimonials_.*/]
     }),
 
   ].concat(htmlPlugins, buildPlugins),
